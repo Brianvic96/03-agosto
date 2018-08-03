@@ -29,29 +29,10 @@
         }
 
         function draw() {
-          background(155);
-            var edad = data.getRowCount();
-            for (var a = 0; a < edad; a++) {
-              var victimas = data.get(a, 1);
-              var victimario = data.get(a, 2);
-              if (victimas > 0){
-                fill(0);
-                textAlign(CENTER);
-                textSize(9);
-                text(".\n"+a,(width/edad)*a,height/3)
+          background(0);
+            
               }
-              fill(255,map(victimas,0,10,75,150));
-              ellipse((width/edad)*a,height/3,2*(victimas+1),2*(victimas+1));
-
-              fill(255,map(victimario,0,10,75,150));
-              ellipse((width/edad)*a,(height/3)*2,2*(victimario+1),2*(victimario+1));
-              if (victimario > 0){
-                fill(0);
-                textAlign(CENTER);
-                textSize(9);
-                text(".\n"+a,(width/edad)*a,(height/3)*2)
-              }
-            }
+            
         }
 
         function windowResized() {
