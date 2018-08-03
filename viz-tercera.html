@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"> 
+<title>Primera</title>
+</head>
+<body>
+<!--Nada más que p5.js para dibujar en el body de esta página-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+<script>
+
+    
+function preload(){
+    year=loadTable("https://raw.githubusercontent.com/Brianvic96/27-julio/gh-pages/csv/mission%20year.csv", "csv", "header");
+}
+    
+function setup(){
+    var canvas = createCanvas(windowWidth,500);
+    canvas.position(0,0)
+    noStroke();
+    smooth();
+}
+    
+    
+function draw(){
+    background(0);
+    fill(255);
+    
+    textAlign(CENTER);
+    textSize(15);
+    textStyle(BOLD);
+    text('LÍNEA DE TIEMPO DE LANZAMIENTOS', (windowWidth/2), height/10);
+    
+    for (var a = 0; a < year.getColumnCount(); a++) {
+        var year1 = (windowWidth/90)*(year.get(0, a)-1940);
+        var year2 = (windowWidth/90)*(year.get(1, a)-1940);
+        var year3 = (windowWidth/90)*(year.get(2, a)-1940);
+        var year4 = (windowWidth/90)*(year.get(3, a)-1940);
+        var year5 = (windowWidth/90)*(year.get(4, a)-1940);
+        
+        textAlign(LEFT);
+        text('Estados Unidos', 20, (height/10)*3);
+        ellipse((year1), (height/10)*3,8,8);
+        
+        text('EEUU y Europa', 20, (height/10)*4);
+        ellipse((year2), (height/10)*4,8,8);
+        
+        text('EEUU y Alemania', 20, (height/10)*5);
+        ellipse((year3), (height/10)*5,8,8);
+        
+        text('EEUU y Reino Unido', 20, (height/10)*6);
+        ellipse((year4), (height/10)*6,8,8);
+        
+        text('Europa', 20, (height/10)*7);
+        ellipse((year5), (height/10)*7,8,8);
+	    
+	textAlign(CENTER);
+        text(year.get(0,1), (windowWidth/90)*(year.get(0, 1)-1940), height-100);
+        text(year.get(4,1), (windowWidth/90)*(year.get(4, 1)-1940), height-100);
+
+	}
+
+} 
+
+function windowResized() {
+  resizeCanvas(windowWidth, 500);
+}   
+</script>
+</body>
+</html>
